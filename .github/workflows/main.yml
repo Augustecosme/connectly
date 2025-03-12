@@ -22,10 +22,8 @@ jobs:
       - name: Update dependencies
         run: npm update
 
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          git add .
-          git commit -m "Auto-update dependencies"
-          git push
+      - name: Run SonarQube analysis
+        run: npm install -g sonarqube-scanner
+             sonar-scanner
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
