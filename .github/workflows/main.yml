@@ -22,8 +22,7 @@ jobs:
       - name: Update dependencies
         run: npm update
 
-      - name: Run SonarQube analysis
-        run: npm install -g sonarqube-scanner
-             sonar-scanner
+      - name: Build
+        run: npm install gulp
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
